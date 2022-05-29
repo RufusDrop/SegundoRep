@@ -1,4 +1,3 @@
-
 package interfaces;
 
 import classes.Opinion;
@@ -11,40 +10,46 @@ public class OpinionPanel extends javax.swing.JPanel {
     public OpinionPanel() {
         initComponents();
     }
-    public void MostrarOpinion(Opinion opinion){
+
+    public void MostrarOpinion(Opinion opinion) {
         setjLabelOpinion(opinion.getComentario());
         setjLabelFecha(opinion.getFechaRealizacion().toString());
         setPuntuacion(opinion.getCalificacion());
     }
-    
-    public String getjLabelOpinion(){
+
+    public String getjLabelOpinion() {
         return jLabelOpinion.getText();
     }
-    public void setjLabelOpinion(String txt){
-        jLabelOpinion.setText("\""+txt+"\"");
+
+    public void setjLabelOpinion(String txt) {
+        jLabelOpinion.setText("\"" + txt + "\"");
     }
-    public int getjLabelPuntuacion(){
+
+    public int getjLabelPuntuacion() {
         return Integer.parseInt(jLabelPuntuacion.getText());
     }
-    public void setPuntuacion(int num){
-        if(num == -1){
+
+    public void setPuntuacion(int num) {
+        if (num == -1) {
             jProgressBarPuntuacion.setVisible(false);
             jLabelPuntuacion.setVisible(false);
             jLabelPuntuacionMaxima.setVisible(false);
-        }else{
-             jLabelPuntuacion.setText(String.valueOf(num));
-             setBarraValue(num);
-             jProgressBarPuntuacion.setVisible(true);
-             jLabelPuntuacion.setVisible(true);
-             jLabelPuntuacionMaxima.setVisible(true);
+        } else {
+            jLabelPuntuacion.setText(String.valueOf(num));
+            setBarraValue(num);
+            jProgressBarPuntuacion.setVisible(true);
+            jLabelPuntuacion.setVisible(true);
+            jLabelPuntuacionMaxima.setVisible(true);
         }
-       
+
     }
-    public void setjLabelFecha(String fecha){
+
+    public void setjLabelFecha(String fecha) {
         jLabelFecha.setText(fecha);
     }
-    public void setBarraValue(double value){
-        int valueInt = ((int)(value+0.5))*100;
+
+    public void setBarraValue(double value) {
+        int valueInt = ((int) (value + 0.5)) * 100;
         jProgressBarPuntuacion.setValue(valueInt);
     }
 
@@ -118,7 +123,6 @@ public class OpinionPanel extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelFecha;

@@ -10,6 +10,7 @@ classes\Manager.class
 interfaces\Registro$8.class
 interfaces\MenuAdministrador$3.class
 interfaces\MenuAdministrador$6.class
+interfaces\Carrito$3$1.class
 interfaces\Registro.class
 interfaces\MenuAdministrador$12.class
 interfaces\UsuarioPanel$3.class
@@ -57,10 +58,8 @@ interfaces\Registro$9.class
 interfaces\InterfazTarjeta$4.class
 interfaces\ProductoPanelCliente$1.class
 interfaces\MainMenu$1.class
-interfaces\Carrito$1$1.class
 interfaces\ProductoPanelAdmin.class
 interfaces\MainMenu$7.class
-classes\Administrador.class
 interfaces\UsuarioPanel$1.class
 classes\UtilOpiniones.class
 interfaces\UsuarioPanel$4.class
@@ -68,6 +67,7 @@ interfaces\Usuario$2.class
 classes\Tarjeta.class
 interfaces\MenuAdministrador$5.class
 classes\Manager$1.class
+interfaces\Carrito$2.class
 interfaces\Registro$1.class
 interfaces\UsuarioPanel$7.class
 interfaces\ProductoPanelAdmin$8.class
@@ -100,3 +100,4 @@ interfaces\Carrito.class
 interfaces\MenuAdministrador$4.class
 classes\Categorias.class
 interfaces\Registro$6.class
+interfaces\Carrito$3.class
