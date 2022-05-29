@@ -4,21 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.Image;
 import java.io.Serializable;
-
-public class Producto implements Serializable {
-
+public class Producto implements Serializable{
     private String titulo;
     private String descripcion;
-    private String categoria;
+    private String categoria; 
     private double precio;
     private String fotoProducto;
     private int stock;
     private LocalDate fechaDeEntrada;
     private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 
-    public Producto(String titulo, String descripcion, String categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada, ArrayList<Opinion> opiniones) {
+    public Producto(String titulo, String descripcion, String categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada,ArrayList<Opinion> opiniones) {
         this.titulo = titulo;
-        this.descripcion = descripcion;
+        this.descripcion= descripcion;
         this.categoria = categoria;
         this.precio = precio;
         this.fotoProducto = fotoProducto;
@@ -31,6 +29,8 @@ public class Producto implements Serializable {
     public String toString() {
         return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + descripcion + ", categoria=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
     }
+    
+    
 
     public String getTitulo() {
         return titulo;
@@ -87,7 +87,7 @@ public class Producto implements Serializable {
     public void setFechaDeEntrada(LocalDate fechaDeEntrada) {
         this.fechaDeEntrada = fechaDeEntrada;
     }
-
+     
     public ArrayList<Opinion> getOpiniones() {
         return opiniones;
     }
@@ -95,38 +95,40 @@ public class Producto implements Serializable {
     public void setOpiniones(ArrayList<Opinion> opiniones) {
         this.opiniones = opiniones;
     }
-
     /**
-     *
+     * 
      * @return DEvuelve la media de las calificaciones de las opiniones
      */
-    public double getOpinionMedia() {
-
-        if (opiniones != null && opiniones.size() != 0) {
-            double suma = 0;
-            for (int i = 0; i < opiniones.size(); i++) {
-                if ((opiniones.get(i).getCalificacion() != -1)) {
-                    suma = suma + opiniones.get(i).getCalificacion();
-                }
-            }
-            String sumaStr = String.valueOf(suma);
-            return (Double.parseDouble(sumaStr) / opiniones.size());
-        } else {
+    public double getOpinionMedia(){
+        
+       
+        if(opiniones != null &&opiniones.size()!=0){
+             double suma=0;
+        for (int i = 0; i < opiniones.size(); i++) {
+            if((opiniones.get(i).getCalificacion()!=-1))
+            {
+                        suma = suma + opiniones.get(i).getCalificacion();
+        }
+        }
+        String sumaStr = String.valueOf(suma);
+            return (Double.parseDouble(sumaStr)/opiniones.size());
+        }else{
             return 0;
         }
-
+        
     }
-
     /**
-     *
+     * 
      * Se añade una opinion a la lista asegurandose de que no se repita
      */
     public void addOpinion(Opinion opinion) {
-        opiniones.add(opinion);
+            opiniones.add(opinion);
     }
-
     public void removeOpinion(Opinion opinion) {
-        opiniones.remove(opinion);
+            opiniones.remove(opinion);
     }
 
+   
+    
+    
 }

@@ -3,8 +3,8 @@ package classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Cliente implements Serializable {
 
+public abstract class Cliente implements Serializable{
     private String nombre;
     private String correo;
     private String clave;
@@ -13,7 +13,7 @@ public abstract class Cliente implements Serializable {
     private int telefono;
     private ArrayList<Producto> carrito;
 
-    public Cliente(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono, ArrayList<Producto> carrito) {
+    public Cliente(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono,ArrayList<Producto> carrito) {
         this.nombre = nombre;
         this.correo = correo;
         this.clave = clave;
@@ -27,6 +27,8 @@ public abstract class Cliente implements Serializable {
     public String toString() {
         return "Cliente{" + "nombre=" + nombre + ", correo=" + correo + ", clave=" + clave + ", direccion=" + direccion + ", tarjeta=" + tarjeta + ", telefono=" + telefono + ", carrito=" + carrito + '}';
     }
+
+   
 
     public String getNombre() {
         return nombre;
@@ -83,30 +85,28 @@ public abstract class Cliente implements Serializable {
     public void setCarrito(ArrayList<Producto> carrito) {
         this.carrito = carrito;
     }
-
-    public boolean addToCarrito(Producto producto) {
-        if (producto == null) {
+    public boolean addToCarrito(Producto producto){
+        if(producto==null){
             return false;
-        } else {
-            carrito.add(producto);
-            return true;
+        }else{
+             carrito.add(producto);
+             return true;
         }
-
+       
     }
-
-    public boolean removeFromCarrito(Producto producto) {
-        if (producto == null) {
+    public boolean removeFromCarrito(Producto producto){
+         if(producto==null){
             return false;
-        } else if (carrito.contains(producto)) {
-            carrito.remove(producto);
-            return true;
-        } else {
+        }else if(carrito.contains(producto)){
+             carrito.remove(producto);
+             return true;
+        }
+        else{
             return false;
         }
     }
-
-    public void clearCarrito() {
+    public void clearCarrito(){
         carrito.clear();
     }
-
+    
 }

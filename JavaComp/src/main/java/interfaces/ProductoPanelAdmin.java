@@ -1,3 +1,4 @@
+
 package interfaces;
 
 import classes.Opinion;
@@ -12,13 +13,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 public class ProductoPanelAdmin extends javax.swing.JPanel {
 
+    
     public ArrayList<Opinion> opinionesaux = new ArrayList<Opinion>();
     private Opinion objopinion;
     private int opinionIndex;
     public MenuAdministrador Parent;
-
     /**
      * Creates new form ProductoPanelAdmin
      */
@@ -29,132 +31,120 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     public void setParent(MenuAdministrador Parent) {
         this.Parent = Parent;
     }
-
-    public void setOpinionIndex(int i) {
+    public void setOpinionIndex(int i){
         opinionIndex = i;
     }
-
-    public int getOpinionIndex() {
+     public int getOpinionIndex(){
         return opinionIndex;
     }
-
-    public void mostrarOpiniones(int index) throws java.lang.IndexOutOfBoundsException {
+    
+    public void mostrarOpiniones(int index) throws java.lang.IndexOutOfBoundsException{
         //try{
         opinionesaux = UtilProducto.getOpiniones();
-        if (opinionesaux.size() < 1) {
-            // JOptionPane.showMessageDialog(this, "No hay opiniones", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-
-            jButtonEliminar.setEnabled(false);
-            opinionPanel1.setVisible(false);
-            return;
-        } else {
-            jButtonEliminar.setEnabled(true);
-            opinionPanel1.setVisible(true);
-        }
+        if ( opinionesaux.size() < 1) {
+               // JOptionPane.showMessageDialog(this, "No hay opiniones", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                
+                jButtonEliminar.setEnabled(false);
+                opinionPanel1.setVisible(false);
+                return;
+            } else {
+                 jButtonEliminar.setEnabled(true);
+                 opinionPanel1.setVisible(true);
+            }
         opinionIndex = index;
         objopinion = UtilProducto.consultaOpinion(opinionIndex);
         presenta(objopinion);
         //}
         //catch(Exception e){
-        //JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-        //System.out.println("Error: " + e.toString());
+            //JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            //System.out.println("Error: " + e.toString());
         //}
-
+        
     }
+    
+    
+        
+
 
     /**
      * Presenta los datos de una persona en el panel de datos
      */
     private void presenta(Opinion opi) {
-
+        
         opinionPanel1.setjLabelOpinion(opi.getComentario());
         opinionPanel1.setPuntuacion(opi.getCalificacion());
         opinionPanel1.setjLabelFecha(opi.getFechaRealizacion().toString());
         //productoPanelAdmin1.set
 
     }
-
-    public String getjTextFieldNombreProducto() {
+    
+    
+    
+    
+    public String getjTextFieldNombreProducto(){
         return jTextFieldNombreProducto.getText();
     }
-
-    public void setjTextFieldNombreProducto(String txt) {
+    public void setjTextFieldNombreProducto(String txt){
         jTextFieldNombreProducto.setText(txt);
     }
-
-    public String getjTextFieldDescripcion() {
+    public String getjTextFieldDescripcion(){
         return jTextFieldDescripcion.getText();
     }
-
-    public void setjTextFieldDescripcion(String txt) {
+    public void setjTextFieldDescripcion(String txt){
         jTextFieldDescripcion.setText(txt);
     }
-
-    public String getjComboBoxCategoria() {
+    public String getjComboBoxCategoria(){
         return String.valueOf(jComboBoxCategoria.getSelectedItem());
     }
-
-    public void setjComboBoxCategoria(String txt) {
+    public void setjComboBoxCategoria(String txt){
         jComboBoxCategoria.setSelectedItem(txt);
     }
-
-    public Double getjFormattedTextFieldPrecio() {
+    public Double getjFormattedTextFieldPrecio(){
         String str = String.valueOf(jFormattedTextFieldPrecio.getValue());
         return Double.parseDouble(str);
     }
-
-    public void setjFormattedTextFieldPrecio(double num) {
+    public void setjFormattedTextFieldPrecio(double num){
         jFormattedTextFieldPrecio.setValue(num);
     }
-
-    public String getjTextFieldFotoProducto() {
+    public String getjTextFieldFotoProducto(){
         return jTextFieldFotoProducto.getText();
     }
-
-    public void setjTextFieldFotoProducto(String txt) {
-        jTextFieldFotoProducto.setText(txt);
+    public void setjTextFieldFotoProducto(String txt){
+       jTextFieldFotoProducto.setText(txt);
     }
-
-    public int getjFormattedTextFieldStock() {
+    public int getjFormattedTextFieldStock(){
         return Integer.parseInt(jFormattedTextFieldStock.getText());
     }
-
-    public void setjFormattedTextFieldStock(int num) {
+    public void setjFormattedTextFieldStock(int num){
         jFormattedTextFieldStock.setText(String.valueOf(num));
     }
-
-    public void setjLabelFotoProducto(String URL) {
+    public void setjLabelFotoProducto(String URL){
         jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource(URL)));
     }
-
-    public String getjTextFieldFechaDeEntrada() {
-        return jTextFieldFechaDeEntrada.getText();
+    public String getjTextFieldFechaDeEntrada(){
+        return  jTextFieldFechaDeEntrada.getText();
     }
-
-    public void setjTextFieldFechaDeEntrada(LocalDate date) {
-        jTextFieldFechaDeEntrada.setText(date.toString());
+    public void setjTextFieldFechaDeEntrada(LocalDate date){
+       jTextFieldFechaDeEntrada.setText(date.toString());
     }
-
-    public void setNuevoProducto() {
+    
+    public void setNuevoProducto(){
         jPanelOpiniones.setVisible(false);
         jLabelFechaDeEntrada.setVisible(false);
         jTextFieldFechaDeEntrada.setVisible(false);
         clearAll();
-
+        
     }
-
-    public void setModificarConsultarProducto() {
+    public void setModificarConsultarProducto(){  
         jPanelOpiniones.setVisible(true);
         jLabelFechaDeEntrada.setVisible(true);
         jTextFieldFechaDeEntrada.setVisible(true);
-
+        
     }
-
-    public void setFotoProducto(String URL) {
-        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/" + URL)));
+    public void setFotoProducto(String URL){
+            jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+URL)));
     }
-
-    public void clearAll() {
+    public void clearAll(){
         jTextFieldNombreProducto.setText(null);
         jTextFieldDescripcion.setText(null);
         jComboBoxCategoria.setSelectedIndex(0);
@@ -163,20 +153,18 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jFormattedTextFieldStock.setText(null);
         jLabelFotoProducto.setIcon(null);
     }
-
-    public void setBarraValue(double value) {
-        int valueInt = ((int) (value + 0.5)) * 100;
+    public void setBarraValue(double value){
+        int valueInt = ((int)(value+0.5))*100;
         jProgressBarPuntuacion.setValue(valueInt);
     }
-
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(double puntuacion){
         jLabelStockTextoPuntuacionMediaValor.setText(String.valueOf(puntuacion));
         setBarraValue(puntuacion);
     }
-
-    public void clearNuevaOpinion() {
+    public void clearNuevaOpinion(){
         jTextFieldTextoOpinion.setText(null);
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -497,15 +485,17 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
     private void jButtonAñadirOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirOpinionActionPerformed
         // TODO add your handling code here:
-
+        
+        
+        
         try {
-            String comentario = "@ADMIN:" + jTextFieldTextoOpinion.getText();
+            String comentario = "@ADMIN:" +jTextFieldTextoOpinion.getText();
             int puntuacion = -1;
             //Establecemos el dia actual del alta como fecha entrada
             LocalDate fechaActual = LocalDate.now();
             LocalDate fechaDeEntrada = fechaActual;
             //ArrayList<Opinion> opiniones = null;
-            Opinion opinion = new Opinion(puntuacion, comentario, fechaDeEntrada);
+            Opinion opinion = new Opinion(puntuacion,comentario,fechaDeEntrada);
             //lo insertamos en el array
             if (UtilProducto.altaOpinion(opinion)) {
                 JOptionPane.showMessageDialog(this, "La opinion se ha publicado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -513,7 +503,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                 UtilProducto.guardarDatos();
                 setOpinionIndex(0);
                 mostrarOpiniones(getOpinionIndex());
-
+               
             } else {
                 JOptionPane.showMessageDialog(this, "La opinion ya existia", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
@@ -521,9 +511,11 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Excepción al opinar", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
-
+        
+        
         //Parent.conectarOpiniones();
-        // System.out.println(UtilProducto.getProductos().toString());
+       // System.out.println(UtilProducto.getProductos().toString());
+                                               
     }//GEN-LAST:event_jButtonAñadirOpinionActionPerformed
 
     private void jFormattedTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldPrecioActionPerformed
@@ -536,26 +528,30 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
     private void jButtonSiguienteOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteOpinionActionPerformed
         // TODO add your handling code here:
-        try {
-            opinionIndex += 1;
-            mostrarOpiniones(opinionIndex);
-        } catch (java.lang.IndexOutOfBoundsException e) {
-            opinionIndex -= 1;
-            JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        try{
+        opinionIndex +=1;
+        mostrarOpiniones(opinionIndex);
         }
+        catch(java.lang.IndexOutOfBoundsException e){
+            opinionIndex -=1;
+             JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+        
 
     }//GEN-LAST:event_jButtonSiguienteOpinionActionPerformed
 
     private void jButtonAnteriorOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorOpinionActionPerformed
         // TODO add your handling code here:
-        try {
-            opinionIndex -= 1;
-            mostrarOpiniones(opinionIndex);
-        } catch (java.lang.IndexOutOfBoundsException e) {
-            opinionIndex += 1;
-            JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        try{
+        opinionIndex -=1;
+        mostrarOpiniones(opinionIndex);
+        }
+        catch(java.lang.IndexOutOfBoundsException e){
+            opinionIndex +=1;
+             JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonAnteriorOpinionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnteriorOpinion;

@@ -1,10 +1,8 @@
 package classes;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-
-public class Opinion implements Serializable {
-
+import java.time.LocalDate; 
+public class Opinion implements Serializable{
     private int calificacion; //Del 1 al 5
     private String comentario;
     private LocalDate fechaRealizacion;
@@ -19,6 +17,7 @@ public class Opinion implements Serializable {
     public String toString() {
         return "Opinion{" + "calificacion=" + calificacion + ", comentario=" + comentario + ", fechaRealizacion=" + fechaRealizacion + '}';
     }
+    
 
     public int getCalificacion() {
         return calificacion;
@@ -43,5 +42,5 @@ public class Opinion implements Serializable {
     public void setFechaRealizacion(LocalDate fechaRealizacion) {
         this.fechaRealizacion = fechaRealizacion;
     }
-
+    
 }
