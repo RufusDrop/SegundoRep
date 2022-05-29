@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Manager {
-
+    
     private static ArrayList<Producto> productos = UtilProducto.getProductos();
 
     /**
@@ -20,7 +20,7 @@ public class Manager {
      */
     public static ArrayList<Producto> BuscarProductos(String texto, List<String> categorias, String tipoBusqueda) {
         ArrayList productosAMostrar = new ArrayList<>();
-        if (texto == null || texto.isBlank()) {
+        if (texto==null || texto.isBlank()) {
             if (categorias.size() >= 1) {
                 for (int i = 0; i < categorias.size(); i++) {
                     for (Producto producto : productos) {
@@ -30,6 +30,8 @@ public class Manager {
                     }
                 }
             }
+
+           
 
         } else ////////CUANDO SI QUE HAY PALABRAS
         {
@@ -48,18 +50,23 @@ public class Manager {
                 }
             }
 
+            
+
+
         }
         if (tipoBusqueda.equals("Por relevancia")) {
-            productosAMostrar = ordenarProductosPorRelevancia(productosAMostrar);
-        } else if (tipoBusqueda.equals("Por mayor precio")) {
-            productosAMostrar = ordenarProductosPorPrecioMayor(productosAMostrar);
-        } else if (tipoBusqueda.equals("Por menor precio")) {
-            productosAMostrar = ordenarProductosPorPrecioMenor(productosAMostrar);
-        }
-        return productosAMostrar;
+                productosAMostrar = ordenarProductosPorRelevancia(productosAMostrar);
+            } else if (tipoBusqueda.equals("Por mayor precio")) {
+                productosAMostrar = ordenarProductosPorPrecioMayor(productosAMostrar);
+            } else if (tipoBusqueda.equals("Por menor precio")) {
+                productosAMostrar = ordenarProductosPorPrecioMenor(productosAMostrar);
+            }
+                    return productosAMostrar;
 
     }
-
+    
+    
+    
     public static ArrayList<Producto> ordenarProductosPorRelevancia(ArrayList<Producto> productosAOrdenar) {
         //Comparador para ordenar los clientes por su nombre
         Comparator NomCliComp = new Comparator() {
@@ -72,7 +79,7 @@ public class Manager {
             }
         };
         //Ordenamos el array
-
+        
         Collections.sort(productosAOrdenar, NomCliComp);
         Collections.reverse(productosAOrdenar);
         return productosAOrdenar;

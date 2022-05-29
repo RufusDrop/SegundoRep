@@ -1,3 +1,4 @@
+
 package interfaces;
 
 import classes.Opinion;
@@ -17,76 +18,69 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 
+
 public class ProductoPanelCliente extends javax.swing.JPanel {
-
-    private ArrayList<OpinionPanel> opinionesInstas = new ArrayList<OpinionPanel>();
+     private ArrayList<OpinionPanel> opinionesInstas = new ArrayList<OpinionPanel>();
     private Producto productoActual;
-
     /**
      * Creates new form ProductoPanelCliente
      */
     public ProductoPanelCliente() {
         initComponents();
     }
-
-    public void setNombreProducto(String nombre) {
-        jLabelNombreProducto.setText("Nombre: " + nombre);
+    
+    public void setNombreProducto(String nombre){
+        jLabelNombreProducto.setText("Nombre: "+nombre);
     }
-
-    public void setDescripcion(String txt) {
-        jLabelDescripcion.setText("Descripción: " + txt);
+    public void setDescripcion(String txt){
+        jLabelDescripcion.setText("Descripción: "+txt);
     }
-
-    public void setCategoria(String txt) {
-        jLabelCategoria.setText("Categoría: " + txt);
+    public void setCategoria(String txt){
+        jLabelCategoria.setText("Categoría: "+txt);
     }
-
-    public void setPrecio(double precio) {
-        jLabelPrecio.setText("Precio: " + String.valueOf(precio));
+    public void setPrecio(double precio){
+        jLabelPrecio.setText("Precio: "+String.valueOf(precio));
     }
-
-    public void setStock(int stock) {
-        jLabelStock.setText("Stock: " + String.valueOf(stock));
+    public void setStock(int stock){
+        jLabelStock.setText("Stock: "+ String.valueOf(stock));
     }
-
-    public void setFechaDeEntrada(String fecha) {
+    public void setFechaDeEntrada(String fecha){
         jLabelFechaDeEntrada.setText(fecha);
-
+        
+        
     }
-
-    public void setFotoProducto(String URL) {
-        //if(Files.exists(path)){
-        System.out.println(getClass().getResource("/images/" + URL));
-        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/" + URL)));
-        // }
-
+     public void setFotoProducto(String URL){
+       //if(Files.exists(path)){
+           System.out.println(getClass().getResource("/images/"+URL));
+            jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+URL)));
+      // }
+        
     }
-
-    public void setUnidadesAComprarMax() {
+    public void setUnidadesAComprarMax(){
         SpinnerModel sm = new SpinnerNumberModel(1, 1, productoActual.getStock(), 1);
         jSpinnerUnidades.setModel(sm);
     }
-
-    public int getUnidadesAComprar() {
-        return (int) jSpinnerUnidades.getValue();
+    public int getUnidadesAComprar(){
+        return (int)jSpinnerUnidades.getValue();
     }
-
-    public void setBarraValue(double value) {
-        int valueInt = ((int) (value + 0.5)) * 100;
+    
+    
+   
+    
+    public void setBarraValue(double value){
+        int valueInt = ((int)(value+0.5))*100;
         jProgressBarPuntuacion.setValue(valueInt);
     }
-
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(double puntuacion){
         jLabelTextoPuntuacionMediaValor.setText(String.valueOf(puntuacion));
         setBarraValue(puntuacion);
     }
-
-    public void setProductoActual(Producto producto) {
+    public void setProductoActual(Producto producto){
         productoActual = producto;
     }
-
-    public void mostrar() {
-
+    
+    public void mostrar(){
+        
         setNombreProducto(productoActual.getTitulo());
         setDescripcion(productoActual.getDescripcion());
         setCategoria(productoActual.getCategoria());
@@ -99,30 +93,30 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
         mostrarOpiniones();
         setUnidadesAComprarMax();
     }
-
-    public void mostrarOpiniones() {
+    
+    public void mostrarOpiniones(){
         int ancho = 300;
         int alto = 600;
-        for (int i = 0; i < opinionesInstas.size(); i++) {
-            jPanelOpiniones.remove(opinionesInstas.get(i));
-        }
-        opinionesInstas.clear();
-
-        if (productoActual.getOpiniones().size() >= 1) {
-
-            for (int i = 0; i < productoActual.getOpiniones().size(); i++) {
-                interfaces.OpinionPanel opinionPanel = new interfaces.OpinionPanel();
-                opinionPanel.setBounds(10, (i * 120), 1200, 100);
-                opinionPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-                alto += 200;
-                jPanelOpiniones.add(opinionPanel);
-                opinionPanel.setVisible(true);
-                opinionPanel.MostrarOpinion(productoActual.getOpiniones().get(i));
-                opinionesInstas.add(opinionPanel);
-
+         for (int i = 0; i < opinionesInstas.size(); i++) {
+                 jPanelOpiniones.remove(opinionesInstas.get(i));
             }
-        }
-
+            opinionesInstas.clear();
+        
+        if(productoActual.getOpiniones().size()>=1){
+           
+        for (int i = 0; i < productoActual.getOpiniones().size(); i++) {
+            interfaces.OpinionPanel opinionPanel = new interfaces.OpinionPanel();
+            opinionPanel.setBounds(10, (i*120), 1200, 100);
+            opinionPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+            alto+=200;
+            jPanelOpiniones.add(opinionPanel);
+            opinionPanel.setVisible(true);
+            opinionPanel.MostrarOpinion(productoActual.getOpiniones().get(i));
+            opinionesInstas.add(opinionPanel);
+            
+            
+        }}
+        
         Dimension dimension = new Dimension();
         dimension.height = alto;
         dimension.width = ancho;
@@ -130,11 +124,12 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
         jPanelOpiniones.revalidate();
         jPanelOpiniones.repaint();
     }
-
-    public void clearNuevaOpinion() {
+    public void clearNuevaOpinion(){
         jTextFieldTextoOpinion.setText(null);
         jSpinnerPuntuacion.setValue(0);
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -378,42 +373,46 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
     private void jButtonAñadirOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirOpinionActionPerformed
         // TODO add your handling code here:
         String texto = jTextFieldTextoOpinion.getText();
-        int puntuacion = (int) jSpinnerPuntuacion.getValue();
+        int puntuacion = (int)jSpinnerPuntuacion.getValue();
         LocalDate fecha = LocalDate.now();
-        Opinion opinion = new Opinion(puntuacion, texto, fecha);
+        Opinion opinion = new Opinion(puntuacion,texto,fecha);
         if (UtilProducto.altaOpinion(opinion)) {
-            JOptionPane.showMessageDialog(this, "La opinion se ha publicado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            clearNuevaOpinion();
-            UtilProducto.guardarDatos();
-            mostrarOpiniones();
-            setPuntuacion(productoActual.getOpinionMedia());
-        } else {
-            JOptionPane.showMessageDialog(this, "La opinion ya existia", "Mensaje", JOptionPane.ERROR_MESSAGE);
-        }
+                JOptionPane.showMessageDialog(this, "La opinion se ha publicado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                clearNuevaOpinion();
+                UtilProducto.guardarDatos();
+                mostrarOpiniones();
+                setPuntuacion(productoActual.getOpinionMedia());
+            } else {
+                JOptionPane.showMessageDialog(this, "La opinion ya existia", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        
 
+        
     }//GEN-LAST:event_jButtonAñadirOpinionActionPerformed
 
     private void jButtonAnadirCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCarritoActionPerformed
         // TODO add your handling code here:
-        int unidades = (int) jSpinnerUnidades.getValue();
-        Producto productoModificado = new Producto(productoActual.getTitulo() + "x" + unidades, productoActual.getDescripcion(),
-                productoActual.getCategoria(), productoActual.getPrecio(),
-                productoActual.getFotoProducto(), productoActual.getStock(), productoActual.getFechaDeEntrada(), productoActual.getOpiniones());
-        if (Login.objcli.addToCarrito(productoModificado)) {
-
-            JOptionPane.showMessageDialog(this, "Se han añadido " + unidades + " unidades de " + productoActual.getTitulo() + " al carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            productoActual.setStock(productoActual.getStock() - unidades);
-            System.out.println(productoActual.getStock());
-            System.out.println(Login.objcli.getCarrito().toString());
-            mostrar();
-            UtilRegistro.guardarDatos();
-            UtilProducto.guardarDatos();
-        } else {
+        int unidades = (int)jSpinnerUnidades.getValue();
+        Producto productoModificado = new Producto(productoActual.getTitulo()+"x"+unidades,productoActual.getDescripcion(),
+                productoActual.getCategoria(),productoActual.getPrecio(),
+                productoActual.getFotoProducto(),productoActual.getStock(),productoActual.getFechaDeEntrada(),productoActual.getOpiniones());
+        if(Login.objcli.addToCarrito(productoModificado)){
+                
+             JOptionPane.showMessageDialog(this, "Se han añadido "+unidades+" unidades de "+productoActual.getTitulo()+" al carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+             productoActual.setStock(productoActual.getStock()-unidades);
+             System.out.println(productoActual.getStock());
+             System.out.println(Login.objcli.getCarrito().toString());
+             mostrar();
+             UtilRegistro.guardarDatos();
+             UtilProducto.guardarDatos();
+        }
+        else{
             JOptionPane.showMessageDialog(this, "Fallo al añadir al carrito", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
-        jSpinnerUnidades.setValue(1);
-
+        jSpinnerUnidades.setValue(1);   
+        
     }//GEN-LAST:event_jButtonAnadirCarritoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnadirCarrito;

@@ -1,26 +1,17 @@
-package classes;
 
+package classes;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
-
 public class UtilProducto {
-
     private static ArrayList<Producto> productos = new ArrayList<Producto>();
     public static Producto productoActual;
-
-    /**
-     * Establece el ArrayList de productos
-     *
-     * @param p
-     */
+    /** Establece el ArrayList de productos
+     * @param p */
     public static void setProductos(ArrayList<Producto> p) {
         productos = p;
     }
-
-    /**
-     * @return Devuelve el ArrayList de productos
-     */
+    /**@return Devuelve el ArrayList de productos */
     public static ArrayList<Producto> getProductos() {
         //Comparador para ordenar los clientes por su nombre
         Comparator NomCliComp = new Comparator() {
@@ -36,13 +27,9 @@ public class UtilProducto {
         Collections.sort(productos, NomCliComp);
         return productos;
     }
-
-    /**
-     * Da de alta un producto
-     *
+    /** Da de alta un producto
      * @param objcli
-     * @return boolean
-     */
+     * @return  boolean */
     public static boolean altaProducto(Producto objproc) {
         if (!productos.contains(objproc)) {
             productos.add(objproc);
@@ -52,7 +39,6 @@ public class UtilProducto {
         }
 
     }
-
     public static boolean bajaProducto(Producto objproc) {
         if (productos.contains(objproc)) {
             productos.remove(objproc);
@@ -61,31 +47,24 @@ public class UtilProducto {
             return false;
         }
     }
-
-    /**
-     * Devuelve una producto por la posición dentro del ArrayList
-     *
+        
+    /** Devuelve una producto por la posición dentro del ArrayList
      * @param indice
-     * @return objcli
-     */
+     * @return objcli */
     public static Producto consultaProducto(int indice) {
         return productos.get(indice);
     }
-
-    /**
-     * Modifica los datos de una persona
-     *
-     * @param cli
-     * @param cli_titulo
-     * @param cli_descripcion
-     * @param cli_categoria
-     * @param cli_precio
-     * @param cli_fotoProducto
-     * @param cli_stock
-     * @param cli_fechaDeEntrada
-     * @param opiniones
-     * @return boolean
-     */
+    /** Modifica los datos de una persona
+     * @param cli     
+     * @param cli_titulo     
+     * @param cli_descripcion     
+     * @param cli_categoria     
+     * @param cli_precio     
+     * @param cli_fotoProducto     
+     * @param cli_stock     
+     * @param cli_fechaDeEntrada     
+     * @param opiniones     
+     * @return boolean */
     public static boolean modificaProducto(Producto producto, String producto_titulo, String producto_descripcion, String producto_categoria, double producto_precio, String producto_fotoProducto, int producto_stock, LocalDate producto_fechaDeEntrada, ArrayList<Opinion> producto_opiniones) {
         if (producto == null || !productos.contains(producto)) {
             return false;
@@ -100,20 +79,18 @@ public class UtilProducto {
         producto.setOpiniones(producto_opiniones);
         return true;
     }
-
+    
+    
+    
     /////OPINIONEs
-    /**
-     * Establece el ArrayList de productos
-     *
-     * @param p
-     */
+     
+    
+    /** Establece el ArrayList de productos
+     * @param p */
     public static void setOpiniones(ArrayList<Opinion> o) {
         productoActual.setOpiniones(o);
     }
-
-    /**
-     * @return Devuelve el ArrayList de productos
-     */
+    /**@return Devuelve el ArrayList de productos */
     public static ArrayList<Opinion> getOpiniones() {
         //Comparador para ordenar los clientes por su nombre
         Comparator NomCliComp = new Comparator() {
@@ -129,23 +106,19 @@ public class UtilProducto {
         Collections.sort(productoActual.getOpiniones(), NomCliComp);
         return productoActual.getOpiniones();
     }
-
-    /**
-     * Da de alta un producto
-     *
+    /** Da de alta un producto
      * @param objcli
-     * @return boolean
-     */
+     * @return  boolean */
     public static boolean altaOpinion(Opinion objopi) {
-        if (!productoActual.getOpiniones().contains(objopi)) {
-            productoActual.addOpinion(objopi);
+        if(!productoActual.getOpiniones().contains(objopi)){
+           productoActual.addOpinion(objopi);
             return true;
-        } else {
+        }
+        else{
             return false;
         }
 
     }
-
     public static boolean bajaOpinion(Opinion objopi) {
         if (productoActual.getOpiniones().contains(objopi)) {
             productoActual.removeOpinion(objopi);
@@ -155,20 +128,14 @@ public class UtilProducto {
         }
 
     }
-
-    /**
-     * Devuelve una producto por la posición dentro del ArrayList
-     *
+    
+    /** Devuelve una producto por la posición dentro del ArrayList
      * @param indice
-     * @return objcli
-     */
+     * @return objcli */
     public static Opinion consultaOpinion(int indice) {
         return productoActual.getOpiniones().get(indice);
     }
-
-    /**
-     * Carga los datos de productos del fichero
-     */
+       /** Carga los datos de productos del fichero */
     public static void cargarDatos() {
         try {
             //Lectura de los objetos de tipo persona
@@ -185,16 +152,12 @@ public class UtilProducto {
         }
     }//fin cargarDatos
 
-    /**
-     * Guarda los datos de personas en el fichero
-     */
+    /** Guarda los datos de personas en el fichero */
     public static void guardarDatos() {
         try {
             //Si hay datos los guardamos...
             if (!productos.isEmpty()) {
-                /**
-                 * **** Serialización de los objetos *****
-                 */
+                /****** Serialización de los objetos ******/
                 //Serialización de las personas
                 FileOutputStream ostreamCli = new FileOutputStream("copiasegProductos.dat");
                 ObjectOutputStream oosCli = new ObjectOutputStream(ostreamCli);
@@ -211,5 +174,7 @@ public class UtilProducto {
             System.out.println("Error: " + e.getMessage());
         }
     }//fin guardarDatos
+       
+
 
 }

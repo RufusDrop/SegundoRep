@@ -1,3 +1,4 @@
+
 package interfaces;
 
 import classes.Producto;
@@ -8,32 +9,28 @@ import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 
 public class ProductoPanel extends javax.swing.JPanel {
-
     private MainMenu Parent;
     private Producto productoBase;
-
     /**
      * Creates new form ProductoPanel
      */
-    public ProductoPanel(Producto producto, MainMenu parent) {
+    public ProductoPanel(Producto producto,MainMenu parent) {
         initComponents();
         mostrarProducto(producto);
         Parent = parent;
-        productoBase = producto;
-
+        productoBase=producto;
+        
         //SE LE AÑADE UN BORDER
         this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
     }
-
-    private void mostrarProducto(Producto producto) {
+    private void mostrarProducto(Producto producto){
         jLabelNombreProducto.setText(producto.getTitulo());
-        jLabelDescripcion.setText("\"" + producto.getDescripcion() + "\"");
-        jLabelPrecio.setText("Precio: " + String.valueOf(producto.getPrecio()));
-        jLabelStock.setText("Stock: " + String.valueOf(producto.getStock()));
-        jLabelPuntuacionMedia.setText("Puntuación: " + String.valueOf(producto.getOpinionMedia()));
-        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/" + producto.getFotoProducto())));
+        jLabelDescripcion.setText("\""+producto.getDescripcion()+"\"");
+        jLabelPrecio.setText("Precio: "+String.valueOf(producto.getPrecio()));
+        jLabelStock.setText("Stock: "+String.valueOf(producto.getStock()));
+        jLabelPuntuacionMedia.setText("Puntuación: "+String.valueOf(producto.getOpinionMedia()));
+        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+producto.getFotoProducto())));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +99,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
     }//GEN-LAST:event_formMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelDescripcion;

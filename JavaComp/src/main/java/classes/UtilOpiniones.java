@@ -1,3 +1,4 @@
+
 package classes;
 
 import java.io.FileInputStream;
@@ -11,22 +12,14 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class UtilOpiniones {
-
     private static ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
     private static Opinion opicli;
-
-    /**
-     * Establece el ArrayList de productos
-     *
-     * @param p
-     */
+    /** Establece el ArrayList de productos
+     * @param p */
     public static void setOpiniones(ArrayList<Opinion> o) {
         opiniones = o;
     }
-
-    /**
-     * @return Devuelve el ArrayList de productos
-     */
+    /**@return Devuelve el ArrayList de productos */
     public static ArrayList<Opinion> getOpiniones() {
         //Comparador para ordenar los clientes por su nombre
         Comparator NomCliComp = new Comparator() {
@@ -42,13 +35,9 @@ public class UtilOpiniones {
         Collections.sort(opiniones, NomCliComp);
         return opiniones;
     }
-
-    /**
-     * Da de alta un producto
-     *
+    /** Da de alta un producto
      * @param objcli
-     * @return boolean
-     */
+     * @return  boolean */
     public static boolean altaOpinion(Opinion opicli) {
         if (!opiniones.contains(opicli)) {
             opiniones.add(opicli);
@@ -58,35 +47,26 @@ public class UtilOpiniones {
         }
 
     }
-
-    /**
-     * Devuelve una producto por la posición dentro del ArrayList
-     *
+    /** Devuelve una producto por la posición dentro del ArrayList
      * @param indice
-     * @return objcli
-     */
+     * @return objcli */
     public static Opinion consultaOpinion(int indice) {
         opicli = opiniones.get(indice);
         return opicli;
     }
-
-    /**
-     * Modifica los datos de una persona
-     *
-     * @param cli
-     * @param cli_titulo
-     * @param cli_descripcion
-     * @param cli_categoria
-     * @param cli_precio
-     * @param cli_fotoProducto
-     * @param cli_stock
-     * @param cli_fechaDeEntrada
-     * @param opiniones
-     * @return boolean
-     */
-    /**
-     * Carga los datos de productos del fichero
-     */
+    /** Modifica los datos de una persona
+     * @param cli     
+     * @param cli_titulo     
+     * @param cli_descripcion     
+     * @param cli_categoria     
+     * @param cli_precio     
+     * @param cli_fotoProducto     
+     * @param cli_stock     
+     * @param cli_fechaDeEntrada     
+     * @param opiniones     
+     * @return boolean */
+   
+       /** Carga los datos de productos del fichero */
     public static void cargarDatos() {
         try {
             //Lectura de los objetos de tipo persona
@@ -103,16 +83,12 @@ public class UtilOpiniones {
         }
     }//fin cargarDatos
 
-    /**
-     * Guarda los datos de personas en el fichero
-     */
+    /** Guarda los datos de personas en el fichero */
     public static void guardarDatos() {
         try {
             //Si hay datos los guardamos...
             if (!opiniones.isEmpty()) {
-                /**
-                 * **** Serialización de los objetos *****
-                 */
+                /****** Serialización de los objetos ******/
                 //Serialización de las personas
                 FileOutputStream ostreamCli = new FileOutputStream("copiasegCli.dat");
                 ObjectOutputStream oosCli = new ObjectOutputStream(ostreamCli);

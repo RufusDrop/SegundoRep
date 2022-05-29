@@ -1,10 +1,10 @@
+
 package interfaces;
 
 import classes.Cliente;
 import classes.ClienteEmpresa;
 import classes.ClienteParticular;
 import javax.swing.ImageIcon;
-
 public class UsuarioPanel extends javax.swing.JPanel {
 
     /**
@@ -13,14 +13,14 @@ public class UsuarioPanel extends javax.swing.JPanel {
     public UsuarioPanel() {
         initComponents();
         String tipo = getjComboBoxTipoUsuario();
-        if (tipo == "Empresa") {
+        if(tipo=="Empresa"){
             jLabelDNI.setVisible(false);
             jTextFieldDNI.setVisible(false);
             jLabelCIF.setVisible(true);
             jTextFieldCIF.setVisible(true);
             jLabelWeb.setVisible(true);
             jTextFieldWeb.setVisible(true);
-        } else {
+        }else{
             jLabelDNI.setVisible(true);
             jTextFieldDNI.setVisible(true);
             jLabelCIF.setVisible(false);
@@ -29,116 +29,88 @@ public class UsuarioPanel extends javax.swing.JPanel {
             jTextFieldWeb.setVisible(false);
         }
     }
-
-    public String getjComboBoxTipoUsuario() {
-        return jComboBoxTipoUsuario.getName();
+    public String getjComboBoxTipoUsuario(){
+        return jComboBoxTipoUsuario.getName() ;
     }
-
-    public String getjTextFieldNombre() {
+    public String getjTextFieldNombre(){
         return jTextFieldNombre.getText();
     }
-
-    public String getjTextFieldCorreoElectronico() {
+    public String getjTextFieldCorreoElectronico(){
         return jTextFieldCorreoElectronico.getText();
     }
-
-    public String getjTextFieldClave() {
+    public String getjTextFieldClave(){
         return jTextFieldContrasena.getText();
     }
-
-    public String getjTextFieldCalle() {
+    public String getjTextFieldCalle(){
         return jTextFieldCalle.getText();
     }
-
-    public int getjFormattedTextFieldNumero() {
+    public int getjFormattedTextFieldNumero(){
         return Integer.valueOf(jFormattedTextFieldNumero.getText());
     }
-
-    public String getjTextFieldExtra() {
+    public String getjTextFieldExtra(){
         return jTextFieldExtra.getText();
     }
-
-    public String getjTextFieldCiudad() {
+    public String getjTextFieldCiudad(){
         return jTextFieldCiudad.getText();
     }
-
-    public int getjFormattedTextFieldCodigoPostal() {
+    public int getjFormattedTextFieldCodigoPostal(){
         return Integer.valueOf(jFormattedTextFieldCodigoPostal.getText());
     }
-
-    public int getjFormattedTextFieldTelefono() {
+    public int getjFormattedTextFieldTelefono(){
         return Integer.valueOf(jFormattedTextFieldTelefono.getText());
     }
-
-    public String getjTextFieldCIF() {
+    public String getjTextFieldCIF(){
         return jTextFieldCIF.getText();
     }
-
-    public String getjTextFieldWeb() {
+    public String getjTextFieldWeb(){
         return jTextFieldWeb.getText();
     }
-
-    public String getjTextFieldDNI() {
+    public String getjTextFieldDNI(){
         return jTextFieldDNI.getText();
     }
-
-    public void setjComboBoxTipoUsuario(String txt) {
+    public void setjComboBoxTipoUsuario(String txt){
         jComboBoxTipoUsuario.setSelectedItem(txt);
     }
-
-    public void setjTextFieldCIF(String txt) {
+    public void setjTextFieldCIF(String txt){
         jTextFieldCIF.setText(txt);
     }
-
-    public void setjTextFieldDNI(String txt) {
+    public void setjTextFieldDNI(String txt){
         jTextFieldDNI.setText(txt);
     }
-
-    public void setjTextFieldNombre(String txt) {
+    public void setjTextFieldNombre(String txt){
         jTextFieldNombre.setText(txt);
     }
-
-    public void setjTextFieldCorreoElectronico(String txt) {
+    public void setjTextFieldCorreoElectronico(String txt){
         jTextFieldCorreoElectronico.setText(txt);
     }
-
-    public void setjTextFieldContrasena(String txt) {
-        jTextFieldContrasena.setText(txt);
+    public void setjTextFieldContrasena(String txt){
+       jTextFieldContrasena.setText(txt);
     }
-
-    public void setjTextFieldCalle(String txt) {
+    public void setjTextFieldCalle(String txt){
         jTextFieldCalle.setText(txt);
     }
-
-    public void setjFormattedTextFieldNumero(int num) {
+    public void setjFormattedTextFieldNumero(int num){
         jFormattedTextFieldNumero.setText(String.valueOf(num));
     }
-
-    public void setjTextFieldExtra(String txt) {
+    public void setjTextFieldExtra(String txt){
         jTextFieldExtra.setText(txt);
     }
-
-    public void setjTextFieldCiudad(String txt) {
+    public void setjTextFieldCiudad(String txt){
         jTextFieldCiudad.setText(txt);
     }
-
-    public void setjFormattedTextFieldCodigoPostal(int codpost) {
+    public void setjFormattedTextFieldCodigoPostal(int codpost){
         jFormattedTextFieldCodigoPostal.setText(String.valueOf(codpost));
     }
-
-    public void setjFormattedTextFieldTelefono(int num) {
-        jFormattedTextFieldTelefono.setText(String.valueOf(num));
+    public void setjFormattedTextFieldTelefono(int num){
+       jFormattedTextFieldTelefono.setText(String.valueOf(num));
     }
-
-    public void setjTextFieldWeb(String txt) {
+    public void setjTextFieldWeb(String txt){
         jTextFieldWeb.setText(txt);
     }
-
-    public void setjLabelFotoCuenta(String URL) {
+    public void setjLabelFotoCuenta(String URL){
         jLabelFotoCuenta.setIcon(new ImageIcon(getClass().getResource(URL)));
     }
-
-    public void setModoLectura() {
+    public void setModoLectura(){
         jComboBoxTipoUsuario.setEditable(false);
         jTextFieldCIF.setEditable(false);
         jTextFieldDNI.setEditable(false);
@@ -151,8 +123,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jFormattedTextFieldCodigoPostal.setEditable(false);
         jTextFieldWeb.setEditable(false);
     }
-
-    public void setModoEditable() {
+    public void setModoEditable(){
         jComboBoxTipoUsuario.setEditable(true);
         jTextFieldCIF.setEditable(true);
         jTextFieldDNI.setEditable(true);
@@ -165,8 +136,8 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jFormattedTextFieldCodigoPostal.setEditable(true);
         jTextFieldWeb.setEditable(true);
     }
-
-    public void importadorInformacion(Cliente usuario) {
+    
+    public void importadorInformacion(Cliente usuario){
         setjTextFieldNombre(usuario.getNombre());
         setjTextFieldCorreoElectronico(usuario.getCorreo());
         setjTextFieldContrasena(usuario.getClave());
@@ -178,19 +149,18 @@ public class UsuarioPanel extends javax.swing.JPanel {
         setjFormattedTextFieldTelefono(usuario.getTelefono());
         //Obtenemos los atributos especificos a empresa o particular en funcion del tipo de cliente
         String tipo = usuario.getClass().getSimpleName();
-        if (tipo.equals("ClienteEmpresa")) {
+         if (tipo.equals("ClienteEmpresa")) {
             ClienteEmpresa emp = (ClienteEmpresa) usuario;
             setjComboBoxTipoUsuario("Empresa");
             setjTextFieldCIF(emp.getCIF());
             setjTextFieldWeb(emp.getWeb());
-
+            
         } else {
             ClienteParticular part = (ClienteParticular) usuario;
             setjComboBoxTipoUsuario("Particular");
             setjTextFieldDNI(part.getDNI());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -438,18 +408,19 @@ public class UsuarioPanel extends javax.swing.JPanel {
     private void jComboBoxTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoUsuarioActionPerformed
         // TODO add your handling code here:
         /**
-         * Asegura que dependiendo del tipo se activen las debidas cajas.
-         */
+        * Asegura que dependiendo del tipo se activen las debidas cajas.
+        */
         Object tipoDeUsuario;
         tipoDeUsuario = jComboBoxTipoUsuario.getSelectedItem();
-        if (tipoDeUsuario == "Empresa") {
+        if(tipoDeUsuario=="Empresa"){
             jLabelDNI.setVisible(false);
             jTextFieldDNI.setVisible(false);
             jLabelCIF.setVisible(true);
             jTextFieldCIF.setVisible(true);
             jLabelWeb.setVisible(true);
             jTextFieldWeb.setVisible(true);
-        } else if (tipoDeUsuario == "Particular") {
+        }
+        else if(tipoDeUsuario == "Particular"){
             jLabelDNI.setVisible(true);
             jTextFieldDNI.setVisible(true);
             jLabelCIF.setVisible(false);
@@ -474,6 +445,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
     private void jTextFieldExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldExtraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldExtraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
