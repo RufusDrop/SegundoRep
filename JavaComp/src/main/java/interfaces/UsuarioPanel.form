@@ -17,9 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Component id="jLabelFotoCuenta" min="-2" pref="174" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="jLabelFotoCuenta" min="-2" pref="183" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
                           <Component id="jTextFieldCorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLabelFotoCuenta" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
+                  <Component id="jLabelFotoCuenta" min="-2" pref="182" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -204,6 +204,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFotoCuenta">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/IconoCuentaAzulMedium.png"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCIF">
       <Events>

@@ -34,19 +34,35 @@ public class MenuAdministrador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
         
-        
         //CARGAR LOS DATOS
         UtilProducto.cargarDatos();
         UtilRegistro.cargarDatos();
         System.out.println(UtilProducto.getProductos());
         ///CONSULTAR 
-        consultarTodo();
-        consultarClientes();
+        
+         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
+Object tipoDeBusqueda;
+        tipoDeBusqueda = "Usuarios";
+        if (tipoDeBusqueda.equals("Usuarios")) {
+            jPanelProductos.setVisible(false);
+            jPanelUsuarios.setVisible(true);
+            consultarClientes();
+            System.out.println("Consultados");
 
-        //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
-        jPanelProductos.setVisible(false);
-        jPanelUsuarios.setVisible(true);
-        //jPanelVentas.setVisible(false);
+            //jPanelVentas.setVisible(false);
+        } else if (tipoDeBusqueda.equals("Productos")) {
+            jPanelProductos.setVisible(true);
+            jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(false);
+            jPanelConsultaProductos.setVisible(true);
+            jPanelNuevoProducto.setVisible(false);
+            consultarTodo();
+        } else if (tipoDeBusqueda.equals("Ventas")) {
+            jPanelProductos.setVisible(false);
+            jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(true);
+        }
+       
 
         //Para el tema oscuro///
         try {
@@ -194,9 +210,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
             ClienteEmpresa clienteempresa = (ClienteEmpresa) cliente;
             usuarioPanel1.setjTextFieldCIF(clienteempresa.getCIF());
             usuarioPanel1.setjTextFieldWeb(clienteempresa.getWeb());
+            usuarioPanel1.setjComboBoxTipoUsuario("Empresa");
         } else {
             ClienteParticular clienteparticular = (ClienteParticular) cliente;
             usuarioPanel1.setjTextFieldDNI(clienteparticular.getDNI());
+            usuarioPanel1.setjComboBoxTipoUsuario("Particular");
         }
     }
 

@@ -85,6 +85,7 @@ interfaces\MainMenu$6.class
 interfaces\ProductoPanelAdmin$4.class
 classes\UtilProducto.class
 interfaces\Login.class
+interfaces\UsuarioPanel$9.class
 interfaces\Registro$9$1.class
 interfaces\ProductoPanelAdmin$3.class
 interfaces\MainMenu$5.class
