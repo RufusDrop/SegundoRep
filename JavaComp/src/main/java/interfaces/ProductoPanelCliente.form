@@ -30,7 +30,6 @@
                           <Component id="jLabelNombreProducto" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabelFechaDeEntrada" min="-2" pref="566" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -66,27 +65,22 @@
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="jLabelOpiniones" min="-2" pref="396" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPaneOpiniones" min="-2" pref="469" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="178" max="-2" attributes="0"/>
-                                          <Component id="jLabelNuevaOpinion" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabelPuntuacion" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelTextoOpinion" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextFieldTextoOpinion" min="-2" pref="323" max="-2" attributes="0"/>
-                                              <Component id="jSpinnerPuntuacion" min="-2" pref="83" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                          <Component id="jScrollPaneOpiniones" min="-2" pref="469" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="178" max="-2" attributes="0"/>
+                                  <Component id="jLabelNuevaOpinion" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabelPuntuacion" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelTextoOpinion" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jTextFieldTextoOpinion" min="-2" pref="323" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerPuntuacion" min="-2" pref="83" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -94,7 +88,6 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonAñadirOpinion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                   </Group>

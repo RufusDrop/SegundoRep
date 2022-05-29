@@ -381,6 +381,13 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
 
     private void jButtonAnadirCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCarritoActionPerformed
         // TODO add your handling code here:
+        int unidades = (int)jSpinnerUnidades.getValue();
+        Producto productoModificado = new Producto(productoActual.getTitulo()+"x"+unidades,productoActual.getDescripcion(),
+                productoActual.getCategoria(),productoActual.getPrecio(),
+                productoActual.getFotoProducto(),productoActual.getStock(),productoActual.getFechaDeEntrada(),productoActual.getOpiniones());
+        if(Login.objcli.addToCarrito(productoActual)){
+             JOptionPane.showMessageDialog(this, "Se han añadido "+unidades+" unidades de "+productoActual.getTitulo()+" al carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
     }//GEN-LAST:event_jButtonAnadirCarritoActionPerformed
 

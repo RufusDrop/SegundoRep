@@ -85,11 +85,25 @@ public abstract class Cliente implements Serializable{
     public void setCarrito(ArrayList<Producto> carrito) {
         this.carrito = carrito;
     }
-    public void addToCarrito(Producto producto){
-        carrito.add(producto);
+    public boolean addToCarrito(Producto producto){
+        if(carrito==null){
+            return false;
+        }else{
+             carrito.add(producto);
+             return true;
+        }
+       
     }
-    public void removeFromCarrito(Producto producto){
-        carrito.remove(producto);
+    public boolean removeFromCarrito(Producto producto){
+         if(carrito==null){
+            return false;
+        }else if(carrito.contains(producto)){
+             carrito.remove(producto);
+             return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }
