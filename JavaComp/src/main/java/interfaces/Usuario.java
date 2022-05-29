@@ -103,7 +103,7 @@ public class Usuario extends javax.swing.JDialog {
     String dni=usuarioPanel.getjTextFieldDNI();
     Direccion direccion =new Direccion(calle,numero,extra,codigoPostal,ciudad);
     //Llama al metodo modificaCliente para modificar la informacion de este
-    if(UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web)){
+    if(UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web,objcli.getCarrito())){
         JOptionPane.showMessageDialog(this, "Cambios guardados con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
     }else{
         JOptionPane.showMessageDialog(this, "Error.", "Error", JOptionPane.ERROR_MESSAGE);

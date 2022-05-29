@@ -86,7 +86,7 @@ public abstract class Cliente implements Serializable{
         this.carrito = carrito;
     }
     public boolean addToCarrito(Producto producto){
-        if(carrito==null){
+        if(producto==null){
             return false;
         }else{
              carrito.add(producto);
@@ -95,7 +95,7 @@ public abstract class Cliente implements Serializable{
        
     }
     public boolean removeFromCarrito(Producto producto){
-         if(carrito==null){
+         if(producto==null){
             return false;
         }else if(carrito.contains(producto)){
              carrito.remove(producto);
@@ -104,6 +104,9 @@ public abstract class Cliente implements Serializable{
         else{
             return false;
         }
+    }
+    public void clearCarrito(){
+        carrito.clear();
     }
     
 }

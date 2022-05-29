@@ -1,13 +1,13 @@
 
 package classes;
 
+import interfaces.Login;
 import java.io.*;
 import java.util.*;
 
 public class UtilRegistro {
     
     private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    private static Cliente objcli;
 
     /** Establece el ArrayList de clientes
      * @param p */
@@ -49,8 +49,7 @@ public class UtilRegistro {
      * @param indice
      * @return objcli */
     public static Cliente consultaCliente(int indice) {
-        objcli = clientes.get(indice);
-        return objcli;
+        return clientes.get(indice);
     }
 
     /** Modifica los datos de una persona
@@ -64,7 +63,7 @@ public class UtilRegistro {
      * @param cli_cif
      * @param cli_web
      * @return boolean */
-    public static boolean modificaCliente(Cliente cli, String cli_nombre, String cli_correo, String cli_clave, Direccion cli_direccion, int cli_telefono, String cli_dni, String cli_cif, String cli_web) {
+    public static boolean modificaCliente(Cliente cli, String cli_nombre, String cli_correo, String cli_clave, Direccion cli_direccion, int cli_telefono, String cli_dni, String cli_cif, String cli_web,ArrayList<Producto> cli_carrito) {
         if (cli == null || !clientes.contains(cli)) {
             return false;
         }else{
@@ -73,6 +72,7 @@ public class UtilRegistro {
         cli.setClave(cli_clave);
         cli.setDireccion(cli_direccion);
         cli.setTelefono(cli_telefono);
+        cli.setCarrito(cli_carrito);
         String tipo = cli.getClass().getSimpleName();
         if (tipo.equals("ClienteEmpresa")) {
             ClienteEmpresa emp = (ClienteEmpresa) cli;
@@ -85,6 +85,8 @@ public class UtilRegistro {
         return true;
         }
     }
+    
+    
 
     
     /** Carga los datos de personas del fichero */

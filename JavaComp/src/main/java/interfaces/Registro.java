@@ -204,6 +204,7 @@ public class Registro extends javax.swing.JDialog {
 
         jLabelExtra.setText("Letra, piso, puerta...");
 
+        jFormattedTextFieldNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFormattedTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldNumeroActionPerformed(evt);
