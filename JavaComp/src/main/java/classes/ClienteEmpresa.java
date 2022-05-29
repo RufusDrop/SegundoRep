@@ -1,14 +1,15 @@
         package classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class ClienteEmpresa extends Cliente implements Serializable{
     private String CIF;
     private String web;
 
-    public ClienteEmpresa(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono,String CIF,String web) {
-        super(nombre, correo, clave, direccion, tarjeta, telefono);
+    public ClienteEmpresa(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono,String CIF,String web,ArrayList<Producto> carrito) {
+        super(nombre, correo, clave, direccion, tarjeta, telefono,carrito);
         this.CIF = CIF;
         this.web = web;
     }

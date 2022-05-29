@@ -5,8 +5,10 @@ import classes.Cliente;
 import classes.ClienteEmpresa;
 import classes.ClienteParticular;
 import classes.Direccion;
+import classes.Producto;
 import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -421,14 +423,14 @@ public class Registro extends javax.swing.JDialog {
             int telefono = Integer.parseInt(jFormattedTextFieldTelefono.getText());
             
             dir = new Direccion(calle,numero,extra,codigoPostal,ciudad);
-            
+            ArrayList<Producto> carrito = new ArrayList<Producto>();
             if (tipoDeUsuario.equals("Empresa")) {
                 String cif = jTextFieldCIF.getText();
                 String web = jTextFieldWeb.getText();
-                cli = new ClienteEmpresa(nombre , correo , clave , dir , null , telefono , cif , web);
+                cli = new ClienteEmpresa(nombre , correo , clave , dir , null , telefono , cif , web,carrito);
         } else {
                 String dni = jTextFieldDNI.getText();
-            cli = new ClienteParticular(nombre , correo , clave , dir , null , telefono , dni);
+            cli = new ClienteParticular(nombre , correo , clave , dir , null , telefono , dni,carrito);
         }           
         //lo insertamos en el array
         if (UtilRegistro.registroCliente(cli)) {

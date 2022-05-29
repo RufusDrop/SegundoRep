@@ -1,6 +1,7 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public abstract class Cliente implements Serializable{
@@ -10,21 +11,24 @@ public abstract class Cliente implements Serializable{
     private Direccion direccion;
     private Tarjeta tarjeta;
     private int telefono;
+    private ArrayList<Producto> carrito;
 
-    public Cliente(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono) {
+    public Cliente(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono,ArrayList<Producto> carrito) {
         this.nombre = nombre;
         this.correo = correo;
         this.clave = clave;
         this.direccion = direccion;
         this.tarjeta = tarjeta;
         this.telefono = telefono;
+        this.carrito = carrito;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", correo=" + correo + ", clave=" + clave + ", direccion=" + direccion + ", tarjeta=" + tarjeta + ", telefono=" + telefono + '}';
+        return "Cliente{" + "nombre=" + nombre + ", correo=" + correo + ", clave=" + clave + ", direccion=" + direccion + ", tarjeta=" + tarjeta + ", telefono=" + telefono + ", carrito=" + carrito + '}';
     }
-    
+
+   
 
     public String getNombre() {
         return nombre;
@@ -72,6 +76,20 @@ public abstract class Cliente implements Serializable{
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public ArrayList<Producto> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(ArrayList<Producto> carrito) {
+        this.carrito = carrito;
+    }
+    public void addToCarrito(Producto producto){
+        carrito.add(producto);
+    }
+    public void removeFromCarrito(Producto producto){
+        carrito.remove(producto);
     }
     
 }
