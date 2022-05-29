@@ -2,8 +2,8 @@ package classes;
 
 import java.io.Serializable;
 
-
 public class Direccion implements Serializable {
+
     private String direccion;
     private int codigoPostal;
     private String ciudad;
@@ -12,20 +12,21 @@ public class Direccion implements Serializable {
 
     public Direccion(String calle, int numero, String extra, int codigoPostal, String ciudad) {
         this.direccion = calle;
-        this.numero= numero;
+        this.numero = numero;
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
-        this.extra = extra;    
+        this.extra = extra;
     }
 
     @Override
     public String toString() {
         return "Direccion{" + "calle=" + direccion + ", numero=" + numero + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", letra, piso, puerta=" + extra + '}';
     }
-  
+
     public String getCalle() {
         return direccion;
     }
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
