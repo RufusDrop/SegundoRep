@@ -79,6 +79,21 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
         productoActual = producto;
     }
     
+    public void mostrar(){
+        
+        setNombreProducto(productoActual.getTitulo());
+        setDescripcion(productoActual.getDescripcion());
+        setCategoria(productoActual.getCategoria());
+        setPrecio(productoActual.getPrecio());
+        setFotoProducto(productoActual.getFotoProducto());
+        setStock(productoActual.getStock());
+        setFechaDeEntrada(productoActual.getFechaDeEntrada().toString());
+        setPuntuacion(productoActual.getOpinionMedia());
+        setProductoActual(productoActual);
+        mostrarOpiniones();
+        setUnidadesAComprarMax();
+    }
+    
     public void mostrarOpiniones(){
         int ancho = 300;
         int alto = 600;
@@ -270,7 +285,7 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
                                     .addGap(123, 123, 123))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jSpinnerUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(173, 173, 173)))
+                                    .addGap(166, 166, 166)))
                             .addComponent(jButtonAnadirCarrito)
                             .addGap(212, 212, 212))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,7 +362,7 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAnadirCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
+                                .addGap(15, 15, 15)
                                 .addComponent(jLabelUnidades)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSpinnerUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -382,9 +397,14 @@ public class ProductoPanelCliente extends javax.swing.JPanel {
                 productoActual.getCategoria(),productoActual.getPrecio(),
                 productoActual.getFotoProducto(),productoActual.getStock(),productoActual.getFechaDeEntrada(),productoActual.getOpiniones());
         if(Login.objcli.addToCarrito(productoModificado)){
+                
              JOptionPane.showMessageDialog(this, "Se han añadido "+unidades+" unidades de "+productoActual.getTitulo()+" al carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+             productoActual.setStock(productoActual.getStock()-unidades);
+             System.out.println(productoActual.getStock());
              System.out.println(Login.objcli.getCarrito().toString());
+             mostrar();
              UtilRegistro.guardarDatos();
+             UtilProducto.guardarDatos();
         }
         else{
             JOptionPane.showMessageDialog(this, "Fallo al añadir al carrito", "Mensaje", JOptionPane.ERROR_MESSAGE);

@@ -58,20 +58,10 @@ public class MainMenu extends javax.swing.JFrame {
         //</editor-fold>
     }
     public void mostrarProductoSeleccionado(Producto productoSeleccionado){
+        productoPanelCliente1.setProductoActual(productoSeleccionado);
+        productoPanelCliente1.mostrar();
         jScrollPaneProductos.setVisible(false);
         jPanelProductoSeleccionado.setVisible(true);
-        productoPanelCliente1.setNombreProducto(productoSeleccionado.getTitulo());
-        productoPanelCliente1.setDescripcion(productoSeleccionado.getDescripcion());
-        productoPanelCliente1.setCategoria(productoSeleccionado.getCategoria());
-        productoPanelCliente1.setPrecio(productoSeleccionado.getPrecio());
-        productoPanelCliente1.setFotoProducto(productoSeleccionado.getFotoProducto());
-        productoPanelCliente1.setStock(productoSeleccionado.getStock());
-        productoPanelCliente1.setFechaDeEntrada(productoSeleccionado.getFechaDeEntrada().toString());
-        productoPanelCliente1.setPuntuacion(productoSeleccionado.getOpinionMedia());
-        productoPanelCliente1.setProductoActual(productoSeleccionado);
-        productoPanelCliente1.mostrarOpiniones();
-        productoPanelCliente1.setUnidadesAComprarMax();
-        
         
     }
     
