@@ -9,7 +9,7 @@ import classes.UtilProducto;
 import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.time.LocalDate;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
@@ -20,28 +20,26 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private ArrayList<Producto> procaux; //Referencia al ArrayList de personas de la clase Utilproducto
     private ListIterator<Producto> li; //Iterador para recorrer el ArrayList en ambas direcciones
     private Producto objproc; //Referencia a un objeto de tipo persona del ArrayList
-    
+
     private ArrayList<Cliente> peraux; //Referencia al ArrayList de clientes de la clase Utilregistro
     private ListIterator<Cliente> licliente; //Iterador para recorrer el ArrayList en ambas direcciones
     private Cliente objper; //Referencia a un objeto de tipo persona del ArrayList
-    
-    
-    
+
     /**
      * Creates new form MenuAdministrador
      */
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        
+
         //CARGAR LOS DATOS
         UtilProducto.cargarDatos();
         UtilRegistro.cargarDatos();
         System.out.println(UtilProducto.getProductos());
         ///CONSULTAR 
-        
-         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
-Object tipoDeBusqueda;
+
+        //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
+        Object tipoDeBusqueda;
         tipoDeBusqueda = "Usuarios";
         if (tipoDeBusqueda.equals("Usuarios")) {
             jPanelProductos.setVisible(false);
@@ -62,7 +60,6 @@ Object tipoDeBusqueda;
             jPanelUsuarios.setVisible(false);
             //jPanelVentas.setVisible(true);
         }
-       
 
         //Para el tema oscuro///
         try {
@@ -98,17 +95,17 @@ Object tipoDeBusqueda;
     private void consultarTodo() {
         try {
             ///productoPanelAdmin1.consultarTodo();
-            
+
             //referenciamos al ArrayList de UtilCenso
             procaux = UtilProducto.getProductos();
-            
+
             //creamos el iterador sobre el ArrayList
             li = procaux.listIterator();
-            
+
             //si no hay personas...
             if (procaux.size() < 1) {
                 JOptionPane.showMessageDialog(this, "No hay productos1.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-                
+
                 jButtonModificarProducto.setEnabled(false);
                 jButtonEliminarProducto.setEnabled(false);
                 jButtonSiguienteProducto.setEnabled(false);
@@ -121,14 +118,11 @@ Object tipoDeBusqueda;
                 jButtonSiguienteProducto.setEnabled(true);
                 jButtonAnteriorProducto.setEnabled(true);
             }
-            
-            
-            
-            
+
             //presentamos la primera persona
             if (li.hasNext()) {
                 objproc = (Producto) li.next();
-                
+
             }
             if (objproc != null) {
                 presenta(objproc);
@@ -143,8 +137,7 @@ Object tipoDeBusqueda;
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.toString());
         }
-        
-        
+
     }//fin consultarTodo
 
     /**
@@ -160,12 +153,10 @@ Object tipoDeBusqueda;
         productoPanelAdmin1.setjFormattedTextFieldStock(proc.getStock());
         productoPanelAdmin1.setjTextFieldFechaDeEntrada(proc.getFechaDeEntrada());
         productoPanelAdmin1.setPuntuacion(proc.getOpinionMedia());
-        
-        //productoPanelAdmin1.set
 
+        //productoPanelAdmin1.set
     }
-    
-    
+
     private void consultarClientes() {
         try {
             //referenciamos al ArrayList de UtilCenso
@@ -194,7 +185,9 @@ Object tipoDeBusqueda;
         }
     }//fin consultarTodo
 
-    /** Presenta los datos de una persona en el panel de datos */
+    /**
+     * Presenta los datos de una persona en el panel de datos
+     */
     private void presentaClientes(Cliente cliente) {
         usuarioPanel1.setjTextFieldNombre(cliente.getNombre());
         usuarioPanel1.setjTextFieldCorreoElectronico(cliente.getCorreo());
@@ -555,7 +548,7 @@ Object tipoDeBusqueda;
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
-        
+
         Object tipoDeBusqueda;
         tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
         if (tipoDeBusqueda.equals("Usuarios")) {
@@ -583,8 +576,6 @@ Object tipoDeBusqueda;
         jPanelNuevoProducto.setVisible(true);
         productoPanelAdmin1.setVisible(true);
         productoPanelAdmin1.setNuevoProducto();
-        
-
 
     }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
 
@@ -596,24 +587,24 @@ Object tipoDeBusqueda;
             if (objproc != null) {
                 presenta(objproc);
                 UtilProducto.productoActual = objproc;
-                           productoPanelAdmin1.setOpinionIndex(0);
+                productoPanelAdmin1.setOpinionIndex(0);
                 productoPanelAdmin1.mostrarOpiniones(productoPanelAdmin1.getOpinionIndex());
 
                 System.out.println(UtilProducto.productoActual);
-                
+
             } else {
                 System.out.println("Wow");
                 JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_jButtonSiguienteProductoActionPerformed
     /**
      * Modifica el producto seleccionado
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButtonModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarProductoActionPerformed
         // TODO add your handling code here:
@@ -630,48 +621,44 @@ Object tipoDeBusqueda;
             LocalDate fechaDeEntrada = fechaActual;
             ArrayList<Opinion> opiniones = UtilProducto.getOpiniones();
             //ArrayList<Opinion> opiniones = null;
-            
+
             //lo insertamos en el array
-            if (UtilProducto.modificaProducto(objproc,nombreProducto,descripcion,categoria,precio,fotoProducto,stock,fechaDeEntrada,opiniones)) {
+            if (UtilProducto.modificaProducto(objproc, nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, opiniones)) {
                 JOptionPane.showMessageDialog(this, "El producto ha sido modificado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Excepcion al modificar1. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Excepción al modificar2.", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
         UtilProducto.guardarDatos();
-            
-        
-        
-
 
     }//GEN-LAST:event_jButtonModificarProductoActionPerformed
     /**
      * Se elimina el producto seleccionado de los datos
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButtonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarProductoActionPerformed
         // TODO add your handling code here:
         try {
-            
-            
+
             //lo insertamos en el array
             if (UtilProducto.bajaProducto(objproc)) {
                 JOptionPane.showMessageDialog(this, "El producto ha sido eliminado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Excepcion al eliminar. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Excepción al eliminar2.", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
         UtilProducto.guardarDatos();
         consultarTodo();
-        
+
     }//GEN-LAST:event_jButtonEliminarProductoActionPerformed
 
     private void jButtonAnteriorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorProductoActionPerformed
@@ -689,8 +676,7 @@ Object tipoDeBusqueda;
             } else {
                 JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -723,7 +709,7 @@ Object tipoDeBusqueda;
             LocalDate fechaDeEntrada = fechaActual;
             ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
             //ArrayList<Opinion> opiniones = null;
-            
+
             proc = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, opiniones);
             //lo insertamos en el array
             if (UtilProducto.altaProducto(proc)) {

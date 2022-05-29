@@ -1,4 +1,3 @@
-
 package interfaces;
 
 import classes.Manager;
@@ -9,11 +8,11 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainMenu extends javax.swing.JFrame {
-    
+
     private List<String> categoriasSeleccionadas;
     private ArrayList<ProductoPanel> paneles = new ArrayList<ProductoPanel>();
+
     /**
      * Creates new form MainMenu
      */
@@ -24,28 +23,28 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelCorreoElectronico.setText(objcli.getCorreo());//Ponemos el correo electronico del usuario en el menú principal
         jScrollPaneProductos.setVisible(false);
         jPanelProductoSeleccionado.setVisible(false);
-            //Inicializo el jListCategorias con todas las categorias selecccionado
-            jListCategorias.setSelectionInterval(0, 5); //Desde 0 al numero de categorias
-            jButtonCategorias.setText("Todas las categorias");
-            categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
-         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-         jScrollPaneCategorias.setVisible(false);
-         ///////Look and feel
-          try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) { 
-        System.err.println("Failed to initialize LaF");
+        //Inicializo el jListCategorias con todas las categorias selecccionado
+        jListCategorias.setSelectionInterval(0, 5); //Desde 0 al numero de categorias
+        jButtonCategorias.setText("Todas las categorias");
+        categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
+        this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        jScrollPaneCategorias.setVisible(false);
+        ///////Look and feel
+        try {
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -57,40 +56,38 @@ public class MainMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
     }
-    public void mostrarProductoSeleccionado(Producto productoSeleccionado){
+
+    public void mostrarProductoSeleccionado(Producto productoSeleccionado) {
         productoPanelCliente1.setProductoActual(productoSeleccionado);
         productoPanelCliente1.mostrar();
         jScrollPaneProductos.setVisible(false);
         jPanelProductoSeleccionado.setVisible(true);
-        
+
     }
-    
-    
-    private void mostrarProductos(ArrayList<Producto> productos){
+
+    private void mostrarProductos(ArrayList<Producto> productos) {
         int ancho = 860;
         int alto = 600;
-         for (int i = 0; i < paneles.size(); i++) {
-                 jPanelProductos.remove(paneles.get(i));
+        for (int i = 0; i < paneles.size(); i++) {
+            jPanelProductos.remove(paneles.get(i));
+        }
+        paneles.clear();
+
+        if (productos.size() >= 1) {
+            jLabelErrorBusqueda.setVisible(false);
+
+            for (int i = 0; i < productos.size(); i++) {
+                interfaces.ProductoPanel productoPanel = new interfaces.ProductoPanel(productos.get(i), this);
+                productoPanel.setBounds(100, 20 + (i * 200), 1200, 180);
+                alto += 200;
+                jPanelProductos.add(productoPanel);
+                productoPanel.setVisible(true);
+                paneles.add(productoPanel);
+
             }
-            paneles.clear();
-        
-        if(productos.size()>=1){
-        jLabelErrorBusqueda.setVisible(false);
-           
-        for (int i = 0; i < productos.size(); i++) {
-            interfaces.ProductoPanel productoPanel = new interfaces.ProductoPanel(productos.get(i),this);
-            productoPanel.setBounds(100, 20+(i*200), 1200, 180);
-            alto+=200;
-            jPanelProductos.add(productoPanel);
-            productoPanel.setVisible(true);
-            paneles.add(productoPanel);
-            
-            
-        }
-        }
-        else{
+        } else {
             jLabelErrorBusqueda.setVisible(true);
-            jLabelErrorBusqueda.setText("Lo sentimos, no existe ningun producto con las palabras \""+ jTextFieldBusqueda.getText() +" \"en las categorias seleccionadas.");
+            jLabelErrorBusqueda.setText("Lo sentimos, no existe ningun producto con las palabras \"" + jTextFieldBusqueda.getText() + " \"en las categorias seleccionadas.");
         }
         Dimension dimension = new Dimension();
         dimension.height = alto;
@@ -98,7 +95,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanelProductos.setPreferredSize(dimension);
         jPanelProductos.revalidate();
         jPanelProductos.repaint();
-        
+
     }
 
     /**
@@ -398,44 +395,47 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButtonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarritoActionPerformed
         // TODO add your handling code here:
+        new Carrito(this, true).setVisible(true);
+
     }//GEN-LAST:event_jButtonCarritoActionPerformed
 
     private void jButtonCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCuentaActionPerformed
-        new Usuario(this,true).setVisible(true);
+        new Usuario(this, true).setVisible(true);
     }//GEN-LAST:event_jButtonCuentaActionPerformed
 
     private void jListCategoriasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jListCategoriasAncestorAdded
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jListCategoriasAncestorAdded
 
     private void jListCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListCategoriasMouseClicked
         // TODO add your handling code here:
         String categoriasBoton = ""; //Inicializo
-        
+
         categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
         System.out.println(categoriasSeleccionadas);
-        if(jListCategorias.getSelectedValue() == "Todas las categorias"){
+        if (jListCategorias.getSelectedValue() == "Todas las categorias") {
             jListCategorias.setSelectionInterval(0, 5); //Desde 0 al numero de categorias
             jButtonCategorias.setText("Todas las categorias");
-        }else{
-           
+        } else {
+
             for (int i = 0; i < categoriasSeleccionadas.size(); i++) {
-                
-                if(categoriasSeleccionadas.size()==1)
-                        categoriasBoton= categoriasBoton+categoriasSeleccionadas.get(i);
-                else
-                    categoriasBoton= categoriasBoton+categoriasSeleccionadas.get(i)+",";
+
+                if (categoriasSeleccionadas.size() == 1) {
+                    categoriasBoton = categoriasBoton + categoriasSeleccionadas.get(i);
+                } else {
+                    categoriasBoton = categoriasBoton + categoriasSeleccionadas.get(i) + ",";
+                }
             }
             jButtonCategorias.setText(categoriasBoton); //Muestro las categorias como nombre del boton
         }
-        
+
     }//GEN-LAST:event_jListCategoriasMouseClicked
 
     private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
         // TODO add your handling code here:
         jScrollPaneCategorias.setVisible(!jScrollPaneCategorias.isVisible());
-        
+
     }//GEN-LAST:event_jButtonCategoriasActionPerformed
 
     private void jButtonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaActionPerformed
@@ -445,7 +445,7 @@ public class MainMenu extends javax.swing.JFrame {
         String textoBusqueda = jTextFieldBusqueda.getText();
         String metodoBusqueda = jComboBoxTipoBusqueda.getSelectedItem().toString();
         categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
-        mostrarProductos(Manager.BuscarProductos(textoBusqueda, categoriasSeleccionadas,metodoBusqueda));
+        mostrarProductos(Manager.BuscarProductos(textoBusqueda, categoriasSeleccionadas, metodoBusqueda));
     }//GEN-LAST:event_jButtonBusquedaActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
@@ -463,21 +463,21 @@ public class MainMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-         try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        try {
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
-        System.err.println("Failed to initialize LaF");
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

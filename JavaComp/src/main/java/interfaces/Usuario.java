@@ -9,6 +9,7 @@ import classes.Direccion;
 import classes.UtilRegistro;
 import static interfaces.Login.objcli;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -20,14 +21,14 @@ public class Usuario extends javax.swing.JDialog {
      */
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();       
-        if(objcli.getClass().equals(ClienteEmpresa.class)){
+        initComponents();
+        if (objcli.getClass().equals(ClienteEmpresa.class)) {
             usuarioPanel.importadorInformacion(objcli);
-        }else{
+        } else {
             usuarioPanel.importadorInformacion(objcli);
         }
     }
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,31 +89,31 @@ public class Usuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosActionPerformed
- //Recogemos la información recogida en el UsuarioPanel
-    String nombre=usuarioPanel.getjTextFieldNombre();
-    String correo=usuarioPanel.getjTextFieldCorreoElectronico();
-    String clave=usuarioPanel.getjTextFieldClave();
-    String calle=usuarioPanel.getjTextFieldCalle();
-    int numero=usuarioPanel.getjFormattedTextFieldNumero();
-    String extra=usuarioPanel.getjTextFieldExtra();
-    String ciudad=usuarioPanel.getjTextFieldCiudad();
-    int codigoPostal=usuarioPanel.getjFormattedTextFieldCodigoPostal();
-    int telefono=usuarioPanel.getjFormattedTextFieldTelefono();
-    String cif=usuarioPanel.getjTextFieldCIF();
-    String web=usuarioPanel.getjTextFieldWeb();
-    String dni=usuarioPanel.getjTextFieldDNI();
-    Direccion direccion =new Direccion(calle,numero,extra,codigoPostal,ciudad);
-    //Llama al metodo modificaCliente para modificar la informacion de este
-    if(UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web,objcli.getCarrito())){
-        JOptionPane.showMessageDialog(this, "Cambios guardados con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-    }else{
-        JOptionPane.showMessageDialog(this, "Error.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    UtilRegistro.guardarDatos();
+        //Recogemos la información recogida en el UsuarioPanel
+        String nombre = usuarioPanel.getjTextFieldNombre();
+        String correo = usuarioPanel.getjTextFieldCorreoElectronico();
+        String clave = usuarioPanel.getjTextFieldClave();
+        String calle = usuarioPanel.getjTextFieldCalle();
+        int numero = usuarioPanel.getjFormattedTextFieldNumero();
+        String extra = usuarioPanel.getjTextFieldExtra();
+        String ciudad = usuarioPanel.getjTextFieldCiudad();
+        int codigoPostal = usuarioPanel.getjFormattedTextFieldCodigoPostal();
+        int telefono = usuarioPanel.getjFormattedTextFieldTelefono();
+        String cif = usuarioPanel.getjTextFieldCIF();
+        String web = usuarioPanel.getjTextFieldWeb();
+        String dni = usuarioPanel.getjTextFieldDNI();
+        Direccion direccion = new Direccion(calle, numero, extra, codigoPostal, ciudad);
+        //Llama al metodo modificaCliente para modificar la informacion de este
+        if (UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web, objcli.getCarrito())) {
+            JOptionPane.showMessageDialog(this, "Cambios guardados con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        UtilRegistro.guardarDatos();
     }//GEN-LAST:event_jButtonGuardarCambiosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new InterfazTarjeta(this,true).setVisible(true);
+        new InterfazTarjeta(this, true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

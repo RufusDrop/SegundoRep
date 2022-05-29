@@ -1,4 +1,3 @@
-
 package interfaces;
 
 import classes.Cliente;
@@ -9,16 +8,17 @@ import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.ListIterator;
+
 public class Login extends javax.swing.JFrame {
 
-        /**
-         * Creates new form Login
+    /**
+     * Creates new form Login
      */
     private ArrayList<Cliente> cliaux; //Referencia al ArrayList de personas de la clase UtilCenso
     private ListIterator<Cliente> li; //Iterador para recorrer el ArrayList en ambas direcciones
     public static Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
-    
-        private void verificacion() {
+
+    private void verificacion() {
         try {
             //referenciamos al ArrayList de UtilCenso
             cliaux = UtilRegistro.getClientes();
@@ -31,65 +31,63 @@ public class Login extends javax.swing.JFrame {
             }
             //presentamos la primera persona
             objcli = (Cliente) li.next();
-            int i=0;
-            while(i<=cliaux.size()){           
-                if(todoCorrecto(objcli)==1){
+            int i = 0;
+            while (i <= cliaux.size()) {
+                if (todoCorrecto(objcli) == 1) {
                     new MainMenu().setVisible(true);
                     this.setVisible(false);
                     break;
-                }else if(todoCorrecto(objcli)==2){
+                } else if (todoCorrecto(objcli) == 2) {
                     new MenuAdministrador().setVisible(true);
                     this.setVisible(false);
                     break;
+                } else {
+                    objcli = (Cliente) li.next();
+                    i += 1;
                 }
-                else{
-                    objcli = (Cliente) li.next(); 
-                    i+=1;
-                }
-            }            
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: Correo o contraseña incorrectos", "Mensaje", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.toString());
         }
     }//fin consultarTodo
 
-  
     private int todoCorrecto(Cliente cli) {
         String correoIntroducido = jTextFieldCorreoElectronico.getText();
         String claveIntroducida = String.valueOf(jPasswordFieldContrasena.getPassword());
         String correo = cli.getCorreo();
         String clave = cli.getClave();
-        if(correoIntroducido.equals(correo)&&claveIntroducida.equals(clave)){
+        if (correoIntroducido.equals(correo) && claveIntroducida.equals(clave)) {
             return 1;
-        }else if(correoIntroducido.equals("admin@javacomp.com")&&claveIntroducida.equals("admin")){
+        } else if (correoIntroducido.equals("admin@javacomp.com") && claveIntroducida.equals("admin")) {
             return 2;
-        }else{
+        } else {
             return 0;
         }
     }
-    
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
         //CARGAMOS LOS DATOS
         UtilRegistro.cargarDatos();
         UtilProducto.cargarDatos();
-        
-          try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+
+        try {
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
-        System.err.println("Failed to initialize LaF");
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -219,7 +217,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jPasswordFieldContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldContrasenaActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jPasswordFieldContrasenaActionPerformed
 
     private void jTextFieldCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoElectronicoActionPerformed
@@ -227,37 +225,32 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCorreoElectronicoActionPerformed
 
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
-            new Registro(this,true).setVisible(true);
-           //this.setVisible(false);
+        new Registro(this, true).setVisible(true);
+        //this.setVisible(false);
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
     private void jToggleButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
         /**
-         * 
+         *
          * El for comprueba que la contraseña no tenga espacios en ella
          */
         boolean ContrasenaConEspacios = false;
-        for (int i = 0; i <jPasswordFieldContrasena.getPassword().length ; i++) {
+        for (int i = 0; i < jPasswordFieldContrasena.getPassword().length; i++) {
             System.out.println(jPasswordFieldContrasena.getPassword()[i]);
-            if(jPasswordFieldContrasena.getPassword()[i] == ' ')
-            {
-              ContrasenaConEspacios = true;
+            if (jPasswordFieldContrasena.getPassword()[i] == ' ') {
+                ContrasenaConEspacios = true;
             }
         }
-        if(jPasswordFieldContrasena.getPassword().length==0 || jTextFieldCorreoElectronico.getText().isBlank()){  //Se comprueba que los campos esten rellenos
+        if (jPasswordFieldContrasena.getPassword().length == 0 || jTextFieldCorreoElectronico.getText().isBlank()) {  //Se comprueba que los campos esten rellenos
             JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-        else
-            if(jTextFieldCorreoElectronico.getText().contains(" ")){
-                JOptionPane.showMessageDialog(this, "El correo no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE); //Luego se comprueba que el correo sea correcto
-        }
-        else
-        if(ContrasenaConEspacios){
+        } else if (jTextFieldCorreoElectronico.getText().contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El correo no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE); //Luego se comprueba que el correo sea correcto
+        } else if (ContrasenaConEspacios) {
             JOptionPane.showMessageDialog(this, "La contraseña no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE); //Luego se comprueba la contraseña con la booleana anterior
         }
-        
-       verificacion();
+
+        verificacion();
         System.out.println(UtilRegistro.getClientes().toString());
 
     }//GEN-LAST:event_jToggleButtonIniciarSesionActionPerformed
@@ -267,24 +260,26 @@ public class Login extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */ try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
-        System.err.println("Failed to initialize LaF");
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -295,8 +290,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-       
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
